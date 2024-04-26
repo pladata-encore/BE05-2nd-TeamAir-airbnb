@@ -1,4 +1,9 @@
 package com.air.wishlist.domain.repository;
 
-public interface WishlistRepository {
+import com.air.wishlist.domain.entity.Wishlist;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface WishlistRepository
+extends JpaRepository<Wishlist, Integer> {
+
 }

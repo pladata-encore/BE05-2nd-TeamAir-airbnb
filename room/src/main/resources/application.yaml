@@ -1,0 +1,30 @@
+server:
+  port: 9002
+
+
+spring:
+  application:
+    name: room-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/airbnb_db?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    password: 1234
+    username: airbnb
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.80.38:8765/eureka/
+  instance:
+    instance-id: room
+    prefer-ip-address: true
+    ip-address: 192.168.80.39
+
+token:
+  secret: asjdkfnof4241085931nklasf1n1032nlkdsfmi1m2k2
+  expiration: 600000

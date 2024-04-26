@@ -1,0 +1,24 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: reservation
+  datasource:
+    url: jdbc:postgresql://192.168.80.43:5432/reservation?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8889/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: reservation
+
+token:
+  secret: asjdkfnof4241085931nklasf1n1032nlkdsfmi1m2k2
+  expiration: 600000

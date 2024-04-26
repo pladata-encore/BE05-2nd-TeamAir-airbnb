@@ -1,0 +1,49 @@
+#spring.application.name=gateway
+server:
+  port: 9000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: reservation
+          uri: lb://RESERVATION
+          predicates:
+            - Path=/api/reserve/**
+        - id: ROOM-SERVICE
+          uri: lb://ROOM-SERVICE
+          predicates:
+            - Path=/api/v1/room/**
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/user/**
+        - id: COMMENT-SERVICE
+          uri: lb://COMMENT-SERVICE
+          predicates:
+            - Path=/api/v1/comment/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowed-origins: "*"
+            allowed-headers: "*"
+
+#        cors-configurations:
+#          '[/**]':
+#            allowedOrigins: "https://docs.spring.io"
+#            allowedMethods:
+#              - GET
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.80.39:8765/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: gateway
+    ip-address: 192.168.80.38

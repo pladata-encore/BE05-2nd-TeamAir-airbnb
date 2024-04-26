@@ -1,9 +1,25 @@
 server:
-  port: 8000
+  port: 9001
 spring:
   application:
-    name: comment_service
+    name: user-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/airbnb_db?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    url: jdbc:postgresql://localhost:5432/postgres?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
     password: 1234
     username: airbnb
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8765/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: user
+
+token:
+  secret: asjdkfnof4241085931nklasf1n1032nlkdsfmi1m2k2
+  expiration: 600000
